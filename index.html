@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Conecta Serviços</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
+
+<body>
+
+    <header class="cabecalho">
+    <div class="logo">
+        Conecta Serviços
+    </div>
+</header>
+
+<main>
+
+    <section class="hero">
+        <h1>Encontre o profissional que você precisa</h1>
+
+        <p>
+            Solicite um serviço, receba propostas de profissionais
+            e escolha a melhor opção para você.
+        </p>
+
+        <div class="botoes">
+            <button>Quero contratar um serviço</button>
+            <button>Sou profissional</button>
+        </div>
+    </section>
+
+    <section class="servicos-disponiveis">
+
+    <h2>Serviços disponíveis</h2>
+
+    <div id="lista-servicos">
+        <p>Carregando serviços...</p>
+    </div>
+
+    </section>
+
+    <section class="como-funciona">
+
+        <h2>Como funciona?</h2>
+
+        <div class="etapas">
+
+            <div class="etapa">
+                <span>1</span>
+                <h3>Solicite</h3>
+                <p>
+                    Informe qual serviço você precisa.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <span>2</span>
+                <h3>Receba propostas</h3>
+                <p>
+                    Profissionais poderão enviar suas propostas.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <span>3</span>
+                <h3>Escolha</h3>
+                <p>
+                    Analise as propostas e escolha um profissional.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="solicitar-servico">
+
+    <h2>Solicite um serviço</h2>
+
+    <p>
+        Preencha os dados abaixo para solicitar um serviço.
+    </p>
+
+    <form id="form-solicitacao">
+
+        <div class="campo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" required>
+        </div>
+
+        <div class="campo">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div class="campo">
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" required>
+        </div>
+
+        <div class="campo">
+            <label for="servico">Serviço</label>
+            <select id="servico" required>
+                <option value="">Selecione um serviço</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" required>
+        </div>
+
+        <div class="campo">
+            <label for="descricao">Descreva o que você precisa</label>
+            <textarea id="descricao" rows="5" required></textarea>
+        </div>
+
+        <button type="submit">
+            Solicitar serviço
+        </button>
+
+    </form>
+
+    <p id="mensagem-formulario"></p>
+
+</section>
+
+</main>
+
+<footer>
+    <p>Conecta Serviços - MVP</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

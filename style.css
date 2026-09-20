@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+    padding: 40px;
+}
+
+h1 {
+    color: #1f4e79;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+/* CABEÇALHO */
+
+.cabecalho {
+    background-color: #1f4e79;
+    color: white;
+    padding: 20px 8%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ÁREA PRINCIPAL */
+
+main {
+    min-height: calc(100vh - 80px);
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: white;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #1f4e79;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* BOTÕES */
+
+.botoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.botoes button {
+    border: none;
+    padding: 14px 24px;
+    border-radius: 6px;
+    background-color: #1f4e79;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.botoes button:hover {
+    background-color: #163a5c;
+}
+
+/* COMO FUNCIONA */
+
+.como-funciona {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.como-funciona h2 {
+    font-size: 30px;
+    margin-bottom: 40px;
+    color: #1f4e79;
+}
+
+.etapas {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.etapa {
+    background-color: white;
+    width: 280px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.etapa span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    background-color: #1f4e79;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.etapa h3 {
+    margin-bottom: 10px;
+}
+
+.etapa p {
+    color: #666;
+    line-height: 1.5;
+}
+
+/* RODAPÉ */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #1f4e79;
+    color: white;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* SERVIÇOS DISPONÍVEIS */
+
+.servicos-disponiveis {
+    padding: 60px 8%;
+    background-color: #f4f6f8;
+    text-align: center;
+}
+
+.servicos-disponiveis h2 {
+    font-size: 30px;
+    margin-bottom: 35px;
+    color: #1f4e79;
+}
+
+#lista-servicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card-servico {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card-servico h3 {
+    color: #1f4e79;
+    margin-bottom: 10px;
+}
+
+.card-servico p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.card-servico span {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: #e8f0f7;
+    color: #1f4e79;
+    font-size: 13px;
+}
