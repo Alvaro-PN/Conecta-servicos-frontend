@@ -1,11 +1,13 @@
-async function carregarServicos() {
+const API_URL = "http://127.0.0.1:5000";
+
+async function carregarServicos(){
 
     const listaServicos = document.getElementById("lista-servicos");
     const selectServico = document.getElementById("servico");
 
     try {
 
-        const resposta = await fetch("http://127.0.0.1:5000/servicos");
+        const resposta = await fetch(`${API_URL}/servicos`);
 
         const servicos = await resposta.json();
 
@@ -70,7 +72,7 @@ formulario.addEventListener("submit", async function(evento) {
 
 // 1. Verificar se o usuário já existe
 const respostaUsuarios = await fetch(
-    "http://127.0.0.1:5000/usuarios"
+    `${API_URL}/usuarios`
 );
 
 const usuarios = await respostaUsuarios.json();
@@ -90,7 +92,7 @@ let usuario = usuarios.find(
 if (!usuario) {
 
     const respostaNovoUsuario = await fetch(
-        "http://127.0.0.1:5000/usuarios",
+    `${API_URL}/usuarios`,
         {
             method: "POST",
 
@@ -120,7 +122,7 @@ if (!usuario) {
     // Como o POST /usuarios retorna apenas a mensagem,
     // buscamos novamente os usuários para obter o ID.
     const respostaUsuariosAtualizada = await fetch(
-        "http://127.0.0.1:5000/usuarios"
+    `${API_URL}/usuarios`
     );
 
     const usuariosAtualizados =
@@ -142,7 +144,7 @@ if (!usuario) {
         // 2. Criar a solicitação
 
         const respostaSolicitacao = await fetch(
-            "http://127.0.0.1:5000/solicitacoes",
+    `${API_URL}/solicitacoes`,
             {
                 method: "POST",
 
@@ -185,3 +187,188 @@ if (!usuario) {
     }
 
 });
+
+// ==========================================
+// SOLICITAÇÕES DE SERVIÇOS DISPONÍVEIS
+// ==========================================
+
+async function carregarSolicitacoes() {
+
+    const lista =
+        document.getElementById("lista-solicitacoes");
+
+    try {
+
+        const resposta = await fetch(
+            `${API_URL}/solicitacoes`
+        );
+
+        const solicitacoes = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(
+                solicitacoes.erro ||
+                "Erro ao buscar solicitações."
+            );
+        }
+
+        lista.innerHTML = "";
+
+        // Mostrar somente solicitações em aberto
+        const solicitacoesAbertas =
+            solicitacoes.filter(function(solicitacao) {
+                return solicitacao.status === "aberta";
+            });
+
+        if (solicitacoesAbertas.length === 0) {
+
+            lista.innerHTML = `
+                <p class="sem-solicitacoes">
+                    Nenhuma solicitação de serviço disponível no momento.
+                </p>
+            `;
+
+            return;
+        }
+
+        solicitacoesAbertas.forEach(
+            function(solicitacao) {
+
+                const card =
+                    document.createElement("div");
+
+                card.classList.add(
+                    "card-solicitacao"
+                );
+
+                const telefone =
+                    solicitacao.cliente_telefone
+                    ? solicitacao.cliente_telefone
+                        .replace(/\D/g, "")
+                    : "";
+
+                card.innerHTML = `
+                    <div class="informacoes-solicitacao">
+
+                        <h3>
+                            ${solicitacao.servico_nome}
+                        </h3>
+
+                        <p>
+                            ${solicitacao.descricao}
+                        </p>
+
+                        <span>
+                            Cidade: ${solicitacao.cidade}
+                        </span>
+
+                        <span>
+                            Cliente: ${solicitacao.cliente_nome}
+                        </span>
+
+                    </div>
+
+                    <div class="contato-solicitacao">
+
+                        ${
+                            telefone
+                            ? `
+                                <a
+                                    href="https://wa.me/55${telefone}"
+                                    target="_blank"
+                                    class="botao-contato"
+                                >
+                                    Entrar em contato
+                                </a>
+                              `
+                            : `
+                                <p>
+                                    Telefone não disponível.
+                                </p>
+                              `
+                        }
+
+                        <button
+                            class="botao-excluir"
+                            title="Excluir solicitação"
+                        >
+                            🗑️
+                        </button>
+
+                    </div>
+                `;
+
+                lista.appendChild(card);
+
+
+                // Botão de excluir
+                const botaoExcluir =
+                    card.querySelector(
+                        ".botao-excluir"
+                    );
+
+                botaoExcluir.addEventListener(
+                    "click",
+                    async function() {
+
+                        const confirmar = confirm(
+                            "Deseja realmente excluir esta solicitação?"
+                        );
+
+                        if (!confirmar) {
+                            return;
+                        }
+
+                        try {
+
+                            const resposta =
+                                await fetch(
+                                    `${API_URL}/solicitacoes/${solicitacao.id}`,
+                                    {
+                                        method: "DELETE"
+                                    }
+                                );
+
+                            const resultado =
+                                await resposta.json();
+
+                            if (!resposta.ok) {
+
+                                throw new Error(
+                                    resultado.erro ||
+                                    "Não foi possível excluir a solicitação."
+                                );
+                            }
+
+                            // Atualiza a lista
+                            carregarSolicitacoes();
+
+                        } catch (erro) {
+
+                            alert(
+                                "Erro ao excluir a solicitação."
+                            );
+
+                            console.error(erro);
+                        }
+                    }
+                );
+            }
+        );
+
+    } catch (erro) {
+
+        lista.innerHTML = `
+            <p class="sem-solicitacoes">
+                Não foi possível carregar as solicitações.
+            </p>
+        `;
+
+        console.error(
+            "Erro ao carregar solicitações:",
+            erro
+        );
+    }
+}
+
+carregarSolicitacoes();

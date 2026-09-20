@@ -1,12 +1,33 @@
 # Conecta Serviços - Frontend
 
-Frontend do projeto Conecta Serviços, desenvolvido como MVP para a disciplina de Engenharia de Software.
+Frontend do projeto **Conecta Serviços**, desenvolvido como MVP para a disciplina de Engenharia de Software.
+
+O sistema tem como objetivo conectar pessoas que precisam de pequenos serviços residenciais a profissionais que podem realizar esses serviços.
+
+---
 
 ## Sobre o projeto
 
-O Conecta Serviços é uma aplicação que conecta pessoas que precisam de pequenos serviços residenciais a profissionais que podem realizar esses serviços.
+O cliente informa seus dados, escolhe o serviço desejado e descreve o que precisa.
 
-O cliente informa seus dados, escolhe o serviço desejado e envia uma solicitação.
+A solicitação é enviada para a API do backend e fica disponível na lista de solicitações em aberto.
+
+Cada solicitação apresenta a opção de entrar em contato com o cliente através do WhatsApp utilizando o telefone cadastrado.
+
+---
+
+## Funcionalidades
+
+- Exibição dos serviços disponíveis
+- Cadastro de cliente
+- Seleção de serviço
+- Criação de solicitação de serviço
+- Listagem de solicitações em aberto
+- Exibição dos dados da solicitação
+- Contato com o cliente através do WhatsApp
+- Integração com a API do backend
+
+---
 
 ## Tecnologias utilizadas
 
@@ -14,6 +35,8 @@ O cliente informa seus dados, escolhe o serviço desejado e envia uma solicitaç
 - CSS3
 - JavaScript
 - Fetch API
+
+---
 
 ## Estrutura do projeto
 
